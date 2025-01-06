@@ -13,6 +13,7 @@ node_modules/
 
 # env
 src/db/.env
+/.env
 .env.production
 
 # logs
@@ -26,4 +27,4 @@ lerna-debug.log*
 
 # misc
 .DS_Store
-/.env
+
