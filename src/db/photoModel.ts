@@ -1,4 +1,4 @@
-import {boolean, decimal, integer, pgTable, varchar} from "drizzle-orm/pg-core";
+import {integer, pgTable, varchar} from "drizzle-orm/pg-core";
 
 export const photo = pgTable("tb_photo", {
     id: integer().primaryKey().generatedAlwaysAsIdentity(),
