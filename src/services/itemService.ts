@@ -1,7 +1,7 @@
-import { item } from "../db/ItemModel.js";
+import {item} from "../db/itemModel.js";
 import db from "../db/index.js";
-import type { Context } from "hono";
-import { eq } from "drizzle-orm";
+import type {Context} from "hono";
+import {eq} from "drizzle-orm";
 
 export const index = () => {
     return db.select().from(item);

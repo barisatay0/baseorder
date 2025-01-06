@@ -1,5 +1,11 @@
-import { Hono } from 'hono';
-import { indexController, createController, readController, updateController, deleteController } from '../controllers/itemController.js';
+import {Hono} from 'hono';
+import {
+    indexController,
+    createController,
+    readController,
+    updateController,
+    deleteController
+} from '../controllers/itemController.js';
 
 const itemRoute = new Hono();
 
@@ -9,4 +15,4 @@ itemRoute.get("/:id", readController);
 itemRoute.put("/:id", updateController);
 itemRoute.delete("/:id", deleteController);
 
-export { itemRoute };
+export {itemRoute};
