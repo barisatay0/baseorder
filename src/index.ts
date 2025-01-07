@@ -3,8 +3,6 @@ import {Hono} from 'hono';
 import './controllers/itemController';
 import { itemRoute, categoryRoute, companyRoute, photoRoute } from './route/index.js';
 
-
-
 const app = new Hono();
 
 app.route('/items', itemRoute);
