@@ -1,9 +1,9 @@
-import {index, create, read, update, remove} from '../services/categoryService.js';
+import CategoryService from '../services/categoryService.js';
 import type {Context} from "hono";
 
 export const indexController = async (c: Context) => {
     try {
-        const categories = await index();
+        const categories = await CategoryService.index();
         return c.json(categories, 200);
     } catch (error) {
         console.error('Error fetching categories:', error);
@@ -13,7 +13,7 @@ export const indexController = async (c: Context) => {
 
 export const createController = async (c: Context) => {
     try {
-        const category = await create(c);
+        const category = await CategoryService.create(c);
         return c.json(category, 200);
     } catch (error) {
         console.error('Error creating category:', error);
@@ -23,7 +23,7 @@ export const createController = async (c: Context) => {
 
 export const readController = async (c: Context) => {
     try {
-        const category = await read(c);
+        const category = await CategoryService.read(c);
         return c.json(category, 200);
     } catch (error) {
         console.error('Error fetching category:', error);
@@ -33,7 +33,7 @@ export const readController = async (c: Context) => {
 
 export const updateController = async (c: Context) => {
     try {
-        const category = await update(c);
+        const category = await CategoryService.update(c);
         return c.json(category, 200);
     } catch (error) {
         console.error('Error updating category:', error);
@@ -43,7 +43,7 @@ export const updateController = async (c: Context) => {
 
 export const deleteController = async (c: Context) => {
     try {
-        const category = await remove(c);
+        const category = await CategoryService.delete(c);
         return c.json(category, 200);
     } catch (error) {
         console.error('Error deleting category:', error);
