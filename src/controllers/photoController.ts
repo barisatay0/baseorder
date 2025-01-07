@@ -1,9 +1,9 @@
-import {index, create, read, update, remove} from '../services/photoService.js';
+import PhotoService from '../services/photoService.js';
 import type {Context} from "hono";
 
 export const indexController = async (c: Context) => {
     try {
-        const photos = await index();
+        const photos = await PhotoService.index();
         return c.json(photos, 200);
     } catch (error) {
         console.error('Error fetching photos:', error);
@@ -13,7 +13,7 @@ export const indexController = async (c: Context) => {
 
 export const createController = async (c: Context) => {
     try {
-        const photos = await create(c);
+        const photos = await PhotoService.create(c);
         return c.json(photos, 200);
     } catch (error) {
         console.error('Error creating photo:', error);
@@ -23,7 +23,7 @@ export const createController = async (c: Context) => {
 
 export const readController = async (c: Context) => {
     try {
-        const photos = await read(c);
+        const photos = await PhotoService.read(c);
         return c.json(photos, 200);
     } catch (error) {
         console.error('Error fetching photo:', error);
@@ -33,7 +33,7 @@ export const readController = async (c: Context) => {
 
 export const updateController = async (c: Context) => {
     try {
-        const photos = await update(c);
+        const photos = await PhotoService.update(c);
         return c.json(photos, 200);
     } catch (error) {
         console.error('Error updating photo:', error);
@@ -43,7 +43,7 @@ export const updateController = async (c: Context) => {
 
 export const deleteController = async (c: Context) => {
     try {
-        const photos = await remove(c);
+        const photos = await PhotoService.delete(c);
         return c.json(photos, 200);
     } catch (error) {
         console.error('Error deleting photo:', error);
