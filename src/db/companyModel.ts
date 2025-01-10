@@ -1,4 +1,4 @@
-import {point, integer, pgTable, varchar} from "drizzle-orm/pg-core";
+import {point, integer, pgTable, varchar, timestamp} from "drizzle-orm/pg-core";
 
 export const company = pgTable("tb_company", {
     id: integer().primaryKey().generatedAlwaysAsIdentity(),
@@ -7,4 +7,5 @@ export const company = pgTable("tb_company", {
     company_address: point(),
     company_phone: varchar(),
     company_email: varchar(),
+    created_at: timestamp('created_at').notNull().defaultNow(),
 });

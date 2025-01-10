@@ -1,4 +1,4 @@
-import {boolean, decimal, integer, pgTable, varchar} from "drizzle-orm/pg-core";
+import {boolean, decimal, integer, pgTable, varchar,timestamp} from "drizzle-orm/pg-core";
 
 export const item = pgTable("tb_item", {
     id: integer().primaryKey().generatedAlwaysAsIdentity(),
@@ -9,5 +9,6 @@ export const item = pgTable("tb_item", {
     item_price: decimal().notNull(),
     item_description: varchar({length: 255}).notNull(),
     item_specification: varchar({length: 255}).notNull(),
+    created_at: timestamp('created_at').notNull().defaultNow(),
 });
 
