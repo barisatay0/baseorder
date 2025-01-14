@@ -1,5 +1,7 @@
 import ItemService from '../services/itemService.js';
 import type {Context} from "hono";
+import {ZodError} from "zod";
+import {itemValidation} from "../validation/itemValidation.js";
 
 export const indexController = async (c: Context) => {
     try {
@@ -13,11 +15,12 @@ export const indexController = async (c: Context) => {
 
 export const createController = async (c: Context) => {
     try {
-        const items = await ItemService.create(c);
-        return c.json(items, 200);
+        const requestBody = await c.req.json();
+        itemValidation.parse(requestBody);
+        return c.json(await ItemService.create(c), 200);
     } catch (error) {
-        console.error('Error creating item:', error);
-        return c.json({message: 'Failed to create item'}, 500);
+        if (error instanceof ZodError) {return c.json({ message: 'Validation failed', errors: error.errors }, 400);}
+        return c.json({ message: 'Failed to create item' }, 500);
     }
 };
 
