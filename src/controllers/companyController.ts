@@ -1,5 +1,7 @@
+import {CreateValidation,UpdateValidation} from "../validations/companyValidation.js";
 import CompanyService from '../services/companyService.js';
 import type {Context} from "hono";
+import {ZodError} from "zod";
 
 export const indexController = async (c: Context) => {
     try {
@@ -13,11 +15,12 @@ export const indexController = async (c: Context) => {
 
 export const createController = async (c: Context) => {
     try {
-        const company = await CompanyService.create(c);
-        return c.json(company, 200);
+        const requestBody = await c.req.json();
+        CreateValidation.parse(requestBody);
+        return c.json(await CompanyService.create(c), 200);
     } catch (error) {
-        console.error('Error creating company:', error);
-        return c.json({message: 'Failed to create company'}, 500);
+        if (error instanceof ZodError) {return c.json({ message: 'Validation failed', errors: error.errors }, 400);}
+        return c.json({ message: 'Failed to create company' }, 500);
     }
 };
 
@@ -33,11 +36,16 @@ export const readController = async (c: Context) => {
 
 export const updateController = async (c: Context) => {
     try {
-        const company = await CompanyService.update(c);
-        return c.json(company, 200);
+        const requestBody = await c.req.json();
+        UpdateValidation.parse(requestBody);
+        const updatedCompany = await CompanyService.update(c);
+        return c.json(updatedCompany, 200);
     } catch (error) {
+        if (error instanceof ZodError) {
+            return c.json({ message: 'Validation failed', errors: error.errors }, 400);
+        }
         console.error('Error updating company:', error);
-        return c.json({message: 'Failed to update company'}, 500);
+        return c.json({ message: 'Failed to update company' }, 500);
     }
 };
 

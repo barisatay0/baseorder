@@ -1,6 +1,6 @@
 import {z} from "zod";
 
-export const itemValidation = z.object({
+export const CreateValidation = z.object({
     category_id: z.number().int().min(1),
     photo_id: z.number().int().min(1),
     item_status: z.boolean().optional(),
@@ -8,5 +8,6 @@ export const itemValidation = z.object({
     item_price: z.number().min(0),
     item_description: z.string().max(255),
     item_specification: z.string().max(255),
-    created_at: z.string().optional(),
 })
+
+export const UpdateValidation = CreateValidation.partial();

@@ -1,7 +1,7 @@
+import {CreateValidation,UpdateValidation} from "../validations/itemValidation.js";
 import ItemService from '../services/itemService.js';
 import type {Context} from "hono";
 import {ZodError} from "zod";
-import {itemValidation} from "../validation/itemValidation.js";
 
 export const indexController = async (c: Context) => {
     try {
@@ -16,7 +16,7 @@ export const indexController = async (c: Context) => {
 export const createController = async (c: Context) => {
     try {
         const requestBody = await c.req.json();
-        itemValidation.parse(requestBody);
+        CreateValidation.parse(requestBody);
         return c.json(await ItemService.create(c), 200);
     } catch (error) {
         if (error instanceof ZodError) {return c.json({ message: 'Validation failed', errors: error.errors }, 400);}
@@ -36,11 +36,16 @@ export const readController = async (c: Context) => {
 
 export const updateController = async (c: Context) => {
     try {
-        const items = await ItemService.update(c);
-        return c.json(items, 200);
+        const requestBody = await c.req.json();
+        UpdateValidation.parse(requestBody);
+        const updatedItem = await ItemService.update(c);
+        return c.json(updatedItem, 200);
     } catch (error) {
+        if (error instanceof ZodError) {
+            return c.json({ message: 'Validation failed', errors: error.errors }, 400);
+        }
         console.error('Error updating item:', error);
-        return c.json({message: 'Failed to update item'}, 500);
+        return c.json({ message: 'Failed to update item' }, 500);
     }
 };
 
