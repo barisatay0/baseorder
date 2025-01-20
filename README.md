@@ -3,7 +3,7 @@
 
 **BaseOrder - Backend for Barcode-Based Business Management System**
 
-BaseOrder is a backend solution for a business management system that enables menu pages to be accessed through barcode scanning. The project provides APIs to manage categories, items, companies, and photos within a business context.
+BaseOrder is a backend solution for a business menu systems. The project provides APIs to manage categories, items, companies, and photos within a business context.
 
 **Features:**
 - **Category Model**: Manages the relationships between products and categories.
