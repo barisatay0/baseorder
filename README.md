@@ -55,5 +55,4 @@ To get started with BaseOrder, follow these steps:
 
 6. **Access the API**:
     - The backend will start on a local server (e.g., `http://localhost:3000`), where you can interact with the API endpoints.
-
 ---
