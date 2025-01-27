@@ -9,7 +9,7 @@
 .idea/shelf
 
 # deps
-node_modules/
+back/node_modules/
 
 # env
 src/db/.env
