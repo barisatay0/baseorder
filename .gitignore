@@ -1,22 +1,45 @@
-# dev
+# ==========================
+# DEV: Developer Tools
+# ==========================
+
+# Yarn lock files and Yarn related files
 .yarn/
 !.yarn/releases
+
+# VSCode settings (project-specific)
 .vscode/*
 !.vscode/launch.json
 !.vscode/*.code-snippets
+
+# JetBrains/IntelliJ IDEA (IDE-specific files)
 .idea/workspace.xml
 .idea/usage.statistics.xml
 .idea/shelf
 
-# deps
+# ==========================
+# DEPENDENCIES: Dependencies
+# ==========================
+
+# Back-end dependencies (node_modules)
 back/node_modules/
 
-# env
+# Front-end dependencies (node_modules)
+front/node_modules/
+
+# ==========================
+# ENV: Environment Variables
+# ==========================
+
+# .env files and environment variables (sensitive information)
 src/db/.env
 /.env
 .env.production
 
-# logs
+# ==========================
+# LOGS: Log Files
+# ==========================
+
+# Application log files
 logs/
 *.log
 npm-debug.log*
@@ -25,7 +48,48 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# misc
+# ==========================
+# MISC: Miscellaneous Files
+# ==========================
+
+# macOS system files
 .DS_Store
 
+# ==========================
+# BACK-END: Back-end Specific Files
+# ==========================
+
+# Back-end specific environment file
 /back/.env
+
+# ==========================
+# FRONT-END: Front-end Specific Files
+# ==========================
+
+# Compiled and build files
+/front/dist/
+/front/build/
+
+# Vue.js and front-end framework files
+/front/.env.local
+/front/.env.development.local
+/front/.env.production.local
+
+# ==========================
+# TESTS: Test Files and Coverage Reports
+# ==========================
+
+# Test and coverage reports
+coverage/
+
+# Temporary files
+*.bak
+*.tmp
+*.swp
+
+# ==========================
+# OS/IDE Specific Files
+# ==========================
+
+# Windows Thumbs.db file
+Thumbs.db
