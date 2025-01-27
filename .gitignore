@@ -12,9 +12,7 @@
 !.vscode/*.code-snippets
 
 # JetBrains/IntelliJ IDEA (IDE-specific files)
-.idea/workspace.xml
-.idea/usage.statistics.xml
-.idea/shelf
+/.idea
 
 # ==========================
 # DEPENDENCIES: Dependencies
