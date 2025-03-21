@@ -6,14 +6,6 @@
 .yarn/
 !.yarn/releases
 
-# VSCode settings (project-specific)
-.vscode/*
-!.vscode/launch.json
-!.vscode/*.code-snippets
-
-# JetBrains/IntelliJ IDEA (IDE-specific files)
-/.idea
-
 # ==========================
 # DEPENDENCIES: Dependencies
 # ==========================
@@ -48,10 +40,6 @@ lerna-debug.log*
 
 # macOS system files
 .DS_Store
-
-# ==========================
-# BACK-END: Back-end Specific Files
-# ==========================
 
 # ==========================
 # TESTS: Test Files and Coverage Reports

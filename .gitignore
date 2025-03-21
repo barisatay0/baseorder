@@ -1,0 +1,6 @@
+/.idea/
+
+# VSCode settings (project-specific)
+.vscode/*
+!.vscode/launch.json
+!.vscode/*.code-snippets
