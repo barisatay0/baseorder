@@ -19,18 +19,14 @@
 # ==========================
 
 # Back-end dependencies (node_modules)
-back/node_modules/
-
-# Front-end dependencies (node_modules)
-front/node_modules/
+node_modules/
 
 # ==========================
 # ENV: Environment Variables
 # ==========================
 
 # .env files and environment variables (sensitive information)
-src/db/.env
-/.env
+.env
 .env.production
 
 # ==========================
@@ -57,22 +53,6 @@ lerna-debug.log*
 # BACK-END: Back-end Specific Files
 # ==========================
 
-# Back-end specific environment file
-/back/.env
-
-# ==========================
-# FRONT-END: Front-end Specific Files
-# ==========================
-
-# Compiled and build files
-/front/dist/
-/front/build/
-
-# Vue.js and front-end framework files
-/front/.env.local
-/front/.env.development.local
-/front/.env.production.local
-
 # ==========================
 # TESTS: Test Files and Coverage Reports
 # ==========================
@@ -91,3 +71,6 @@ coverage/
 
 # Windows Thumbs.db file
 Thumbs.db
+
+# npm lock file
+/package-lock.json
